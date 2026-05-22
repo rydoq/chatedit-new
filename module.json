@@ -8,7 +8,8 @@
     "verified": "13"
   },
   "languages": [
-    {"lang": "en", "name": "English", "path": "lang/en.json"}
+    {"lang": "en", "name": "English", "path": "lang/en.json"},
+    {"lang": "ko", "name": "Korean", "path": "lang/ko.json"},
   ],
   "flags": {"hotReload": {"extensions": ["css", "json", "hbs"], "paths": ["styles", "lang", "templates"]}},
   "url": "https://github.com/rydoq/chatedit",
