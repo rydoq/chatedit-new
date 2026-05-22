@@ -1,5 +1,5 @@
 {
-  "id": "chatedit-new",
+  "id": "chatedit",
   "title": "Chat Edit for v13+",
   "version": "0.0.41",
   "esmodules": ["scripts/setup.mjs"],
