@@ -1,12 +1,12 @@
 {
-  "name": "chatedit-new",
+  "name": "chatedit",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c rollup.config.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rydoq/chatedit-new.git"
+    "url": "https://github.com/tnfqkdrpwjd/chatedit/git"
   },
   "keywords": [
     "fvtt",
