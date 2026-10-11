@@ -1,9 +1,10 @@
 import { MODULE, CHATEDIT_CONST, SETTINGS, localize } from "./const.mjs";
+import EditorV2 from "./editorv2.mjs";
 
 let PolyglotProvider = null;
 
 Hooks.once("polyglot.init", () => {
-  PolyglotProvider = game.polyglot;
+  PolyglotProvider = game.polyglot.provider;
 });
 
 function ChangeDorakoUIImage(speaker, message) {
@@ -313,7 +314,7 @@ export class Editing {
         visible: (li) => {
           return Editing._isOOC(li.dataset.messageId) && (canvas.tokens.controlled[0] ?? game.user.character);
         },
-        onClick: (li) => {
+        onClick: (event, li) => {
           Editing._makeIC(li.dataset.messageId);
         },
         group: MODULE
@@ -324,7 +325,7 @@ export class Editing {
         visible: (li) => {
           return Editing._isIC(li.dataset.messageId);
         },
-        onClick: (li) => {
+        onClick: (event, li) => {
           Editing._makeOOC(li.dataset.messageId);
         },
         group: MODULE
@@ -335,7 +336,7 @@ export class Editing {
         visible: (li) => {
           return Editing._canEdit(li.dataset.messageId);
         },
-        onClick: (li) => {
+        onClick: (event, li) => {
           Editing.editMessage(li.dataset.messageId);
         },
         group: MODULE
