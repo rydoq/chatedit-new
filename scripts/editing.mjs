@@ -1,5 +1,4 @@
 import { MODULE, CHATEDIT_CONST, SETTINGS, localize } from "./const.mjs";
-import EditorV2 from "./editorv2.mjs";
 
 let PolyglotProvider = null;
 
@@ -308,35 +307,35 @@ export class Editing {
   static _contextMenu(html, menuItems) {
     menuItems.push(
       {
-        name: "CHATEDIT.EDITS.IC",
+        label: "CHATEDIT.EDITS.IC",
         icon: '<i class="fa-solid fa-masks-theater"></i>',
 
-        condition: (li) => {
+        visible: (li) => {
           return Editing._isOOC(li.dataset.messageId) && (canvas.tokens.controlled[0] ?? game.user.character);
         },
-        callback: (li) => {
+        onClick: (li) => {
           Editing._makeIC(li.dataset.messageId);
         },
         group: MODULE
       },
       {
-        name: "CHATEDIT.EDITS.OOC",
+        label: "CHATEDIT.EDITS.OOC",
         icon: '<i class="fa-solid fa-computer"></i>',
-        condition: (li) => {
+        visible: (li) => {
           return Editing._isIC(li.dataset.messageId);
         },
-        callback: (li) => {
+        onClick: (li) => {
           Editing._makeOOC(li.dataset.messageId);
         },
         group: MODULE
       },
       {
-        name: "CHATEDIT.EDITS.Edit",
+        label: "CHATEDIT.EDITS.Edit",
         icon: '<i class="fa-solid fa-eraser"></i>',
-        condition: (li) => {
+        visible: (li) => {
           return Editing._canEdit(li.dataset.messageId);
         },
-        callback: (li) => {
+        onClick: (li) => {
           Editing.editMessage(li.dataset.messageId);
         },
         group: MODULE
