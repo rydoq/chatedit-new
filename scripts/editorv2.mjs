@@ -7,7 +7,7 @@ const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicat
 let PolyglotProvider = null;
 
 Hooks.once("polyglot.init", () => {
-  PolyglotProvider = game.polyglot;
+  PolyglotProvider = game.polyglot.provider;
 });
 
 export default class EditorV2 extends HandlebarsApplicationMixin(ApplicationV2) {
