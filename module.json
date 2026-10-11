@@ -1,11 +1,11 @@
 {
   "id": "chatedit-new",
-  "title": "Chat Edit for v13+",
-  "version": "0.0.41",
+  "title": "Chat Edit Anduril",
+  "version": "0.0.44",
   "esmodules": ["scripts/setup.mjs"],
   "styles": ["styles/chatedit-styles.css"],
   "compatibility": {
-    "verified": "13"
+    "verified": "14"
   },
   "languages": [
     {"lang": "en", "name": "English", "path": "lang/en.json"}
