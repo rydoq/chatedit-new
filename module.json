@@ -1,7 +1,7 @@
 {
   "id": "chatedit-new",
   "title": "Chat Edit Anduril",
-  "version": "0.0.44",
+  "version": "0.0.46",
   "esmodules": ["chatedit-new.mjs"],
   "styles": ["chatedit-new.css"],
   "compatibility": {
@@ -12,8 +12,8 @@
   ],
   "flags": {"hotReload": {"extensions": ["css", "json", "hbs"], "paths": ["styles", "lang", "templates"]}},
   "url": "https://github.com/rydoq/chatedit-new",
-  "manifest": "https://github.com/rydoq/chatedit-new/releases/download/v0.0.44/module.json",
-  "download": "https://github.com/rydoq/chatedit-new/releases/download/v0.0.44/module.zip",
+  "manifest": "https://github.com/rydoq/chatedit-new/releases/download/v0.0.46/module.json",
+  "download": "https://github.com/rydoq/chatedit-new/releases/download/v0.0.46/module.zip",
   "authors": [
     {
       "name": "alakshana",
