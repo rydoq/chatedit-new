@@ -1,5 +1,6 @@
 import {MODULE, SETTINGS} from "./const.mjs";
 import { Editing } from "./editing.mjs";
+import { htmlToMarkdown } from "./markdown.mjs";
 
 const ApplicationV2 = foundry.applications?.api?.ApplicationV2 ?? (class { });
 const HandlebarsApplicationMixin = foundry.applications?.api?.HandlebarsApplicationMixin ?? (cls => cls);
@@ -92,20 +93,6 @@ export default class EditorV2 extends HandlebarsApplicationMixin(ApplicationV2) 
         // Give all languages under the GM's user id
         languagesByToken[game.user.id] = Object.keys(PolyglotProvider.languages);
       }
-    }
-
-    function htmlToMarkdown(html) {
-      if (!html) return "";
-
-      let s = String(html);
-
-      const parser = new showdown.Converter({ });
-      s = parser.makeMd(s).trim();
-
-      s = s.replace(/ *\n *<br\s*\/?>/gi, "")
-        .replace(/<br\s*\/?>\n/gi, "");
-
-      return s;
     }
 
     let html = this.message.content;

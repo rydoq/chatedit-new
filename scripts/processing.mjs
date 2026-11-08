@@ -1,5 +1,6 @@
 import { MODULE, CHATEDIT_CONST, SETTINGS, localize } from "./const.mjs";
 import { Editing } from "./editing.mjs";
+import { renderMarkdown } from "./markdown.mjs";
 
 let polyglotInitialized = false;
 
@@ -52,9 +53,9 @@ export class ProcessChat {
     // The id of the user making the message
     const userid = game.user.id;
 
-    // Create the parser and parse
-    const parser = new showdown.Converter({ extensions: ["inline"] });
-    let parsed = parser.makeHtml(message.content);
+    // Create the parser and parse (markdown is applied inside each paragraph, structure is kept as is)
+    const parser = new showdown.Converter();
+    let parsed = renderMarkdown(message.content, parser);
 
     // Call the pre process hook and process
     const callback = Hooks.call("chatedit.preProcessChatMessage", message, parsed, parser, userid);
@@ -78,14 +79,6 @@ export class ProcessChat {
     showdown.setOption('disableForced4SpacesIndentedSublists', true);
     showdown.setOption('smartIndentationFix', true);
     if (game.settings.get(MODULE, SETTINGS.EMOJI)) showdown.setOption('emoji', true);
-    showdown.extension("inline", function () {
-      return [{
-        type: "output",
-        filter: function (markdown) {
-          return markdown.replace(/<\/?p[^>]*>/gm, "");
-        }
-      }];
-    });
   }
 
   /**

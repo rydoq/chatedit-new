@@ -1,5 +1,6 @@
 import { MODULE, CHATEDIT_CONST, SETTINGS, localize } from "./const.mjs";
 import EditorV2 from "./editorv2.mjs";
+import { markdownToHtml } from "./markdown.mjs";
 
 let PolyglotProvider = null;
 
@@ -125,19 +126,9 @@ export class Editing {
     // Handle (don't destroy) markdown
     if (game.settings.get(MODULE, SETTINGS.MARKDOWN)) {
 
-      const parser = new showdown.Converter({ extensions: ["inline"] });
-
-      // Markdown -> HTML (for saving back into the chat message)
-      function markdownToHtml(markdown) {
-        if (!markdown) return "";
-
-        let s = String(markdown).replace(/\n/g, "<br>");
-
-        return parser.makeHtml(s).trim();
-      }
-
-      // Create the parser and parse
-      const parsed = markdownToHtml(content);
+      // Markdown -> HTML (for saving back into the chat message), same rendering as a new message
+      const parser = new showdown.Converter();
+      const parsed = markdownToHtml(content, parser);
 
       // Call the pre process hook, then process
       const callback = Hooks.call("chatedit.preProcessChatMessage", message, parsed, parser, userid);
